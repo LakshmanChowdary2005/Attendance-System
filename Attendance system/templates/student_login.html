@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Login</title>
+
+  <style>
+    /* Gradient Background Animation */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Scrolling Watermark Animation */
+    @keyframes scrollText {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(270deg, #ff416c, #6a11cb, #2575fc, #ff416c);
+      background-size: 800% 800%;
+      animation: gradientShift 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Scrollable Yellow Watermark */
+    .developer-scroll {
+      position: absolute;
+      bottom: 18%;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .developer-scroll span {
+      display: inline-block;
+      font-family: "Times New Roman", Times, serif; /* REQUIRED FONT */
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      color: #ffd700; /* Yellow */
+      animation: scrollText 18s linear infinite;
+      text-transform: uppercase;
+      text-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
+    }
+
+    /* Login Card */
+    .login-container {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 40px 35px;
+      width: 360px;
+      box-shadow:
+        0 4px 30px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+      color: white;
+      text-align: center;
+      z-index: 2;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 18px;
+      margin-bottom: 25px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px 0;
+      border: none;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: 600;
+      background: linear-gradient(90deg, #1d976c, #93f9b9);
+      color: #003d2b;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(147, 249, 185, 0.6);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(147, 249, 185, 0.9);
+    }
+  </style>
+</head>
+
+<body>
+  
+
+  <!-- Times New Roman Yellow Scrollable Watermark -->
+  <div class="developer-scroll">
+    <span>
+      DEVELOPED BY • J LAKSHMAN CHOWDARY • A LIKHITH • K SAKETH CHOWDARY
+    </span>
+  </div>
+
+  <!-- Student Login -->
+  <div class="login-container">
+    <h2>Student Login</h2>
+    <form method="POST" action="/student">
+      <input
+        type="text"
+        name="roll"
+        placeholder="Enter Roll Number"
+        required
+      />
+      <button type="submit">View Attendance</button>
+    </form>
+  </div>
+
+</body>
+</html>

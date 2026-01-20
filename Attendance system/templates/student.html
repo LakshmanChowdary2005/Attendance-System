@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Attendance</title>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      .chart-container {
+        width: 100%;
+        max-width: 400px;
+        margin: auto;
+      }
+
+      canvas {
+        width: 100% !important;
+        height: auto !important;
+      }
+
+      table {
+        margin: auto;
+        border-collapse: collapse;
+        width: 80%;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+
+      th,
+      td {
+        padding: 8px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="/logout">
+      <button type="button">Logout</button>
+    </a>
+
+    <h2>{{ student[1] }} - Attendance Report</h2>
+
+    <!-- Overall Attendance -->
+    <h3>Overall Attendance</h3>
+    <p>
+      <b>Overall Percentage:</b> {{ overall_percentage }}%
+    </p>
+
+    {% if overall_percentage < 75 %}
+      <p style="color: red; font-weight: bold;">
+        ⚠️ Attendance Shortage (Below 75%)
+      </p>
+    {% else %}
+      <p style="color: green; font-weight: bold;">
+        ✅ Attendance Satisfactory
+      </p>
+    {% endif %}
+
+    <div class="chart-container">
+      <canvas id="attendanceChart"></canvas>
+    </div>
+
+    <!-- Chart Script -->
+    <script>
+      const totalPresent = Number("{{ total_present }}");
+      const totalAbsent = Number("{{ total_absent }}");
+
+      new Chart(document.getElementById("attendanceChart"), {
+        type: "pie",
+        data: {
+          labels: ["Present", "Absent"],
+          datasets: [
+            {
+              data: [totalPresent, totalAbsent],
+              backgroundColor: ["#4CAF50", "#F44336"]
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true
+        }
+      });
+    </script>
+
+    <hr />
+
+    <!-- Subject-wise Attendance -->
+    <h3>Subject-wise Attendance</h3>
+    <ul>
+      {% for sub, per in subject_percentages.items() %}
+        <li>{{ sub }} : {{ per }}%</li>
+      {% endfor %}
+    </ul>
+
+    <hr />
+
+    <!-- Day-wise Attendance -->
+    <h3>Day-wise Attendance</h3>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Subject</th>
+        <th>Status</th>
+      </tr>
+
+      {% for r in records %}
+        <tr>
+          <td>{{ r[0] }}</td>
+          <td>{{ r[1] }}</td>
+          <td>{{ r[2] }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

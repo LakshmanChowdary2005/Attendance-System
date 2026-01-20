@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Mark Attendance</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .student-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .student-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .student-item:hover {
+            background-color: #e6f0ff;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Mark Attendance</h2>
+
+<a href="/logout">
+    <button>Logout</button>
+</a>
+
+<form method="POST" action="/mark">
+
+    <br><br>
+
+    <label><b>Subject:</b></label><br>
+    <select name="subject" required>
+        <option value="">-- Select Subject --</option>
+        {% for sub in [
+            "DevOps",
+            "Software Project Management",
+            "Soft Skills",
+            "Machine Learning",
+            "Machine Learning Lab",
+            "Cloud Computing",
+            "Cloud Computing Lab",
+            "Cryptography and Network Security",
+            "IPR",
+            "CRT",
+            "E-Waste Management"
+        ] %}
+            <option value="{{ sub }}">{{ sub }}</option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    <!-- ✅ STUDENTS GRID (THIS WAS MISSING / BROKEN) -->
+    <div class="student-grid">
+        {% for s in students %}
+            <label class="student-item">
+                <input type="checkbox" name="present_students" value="{{ s[0] }}">
+                <br>
+                <b>{{ s[1] }}</b><br>
+                {{ s[2] }}
+            </label>
+        {% endfor %}
+    </div>
+
+    <br>
+
+    <button type="submit">Submit Attendance</button>
+
+</form>
+
+</body>
+</html>

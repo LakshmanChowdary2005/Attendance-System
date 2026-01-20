@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Attendance System Login</title>
+
+    <style>
+      /* ================= WATERMARK SCROLL ================= */
+      @keyframes scrollText {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(120deg, #6a11cb, #2575fc);
+        margin: 0;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Scrollable Watermark */
+      .watermark {
+        position: absolute;
+        bottom: 15%;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        pointer-events: none;
+      }
+
+      .marquee {
+        display: inline-flex;
+        width: max-content;
+        animation: scrollText 20s linear infinite;
+      }
+
+      .marquee span {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 34px;
+        font-weight: bold;
+        color: #ffd700;
+        letter-spacing: 5px;
+        padding-right: 60px;
+        text-shadow: 0 0 8px gold;
+        text-transform: uppercase;
+      }
+
+      /* ================= LOGIN BOX ================= */
+
+      .box {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        width: 320px;
+        text-align: center;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        z-index: 2;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+      }
+
+      a button {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .faculty {
+        background: #ff512f;
+        color: white;
+      }
+
+      .student {
+        background: #36d1dc;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Scrollable Watermark -->
+    <div class="watermark">
+      <div class="marquee">
+        <span>DEVELOPED BY • J LAKSHMAN CHOWDARY • A LIKHITH • K SAKETH CHOWDARY</span>
+        <span>DEVELOPED BY • J LAKSHMAN CHOWDARY • A LIKHITH • K SAKETH CHOWDARY</span> 
+      </div>
+    </div>
+
+    <!-- Login Box -->
+    <div class="box">
+      <h2>Login As</h2>
+
+      <a href="/admin_login">
+        <button class="faculty">Faculty Login</button>
+      </a>
+
+      <a href="/student_login">
+        <button class="student">Student Login</button>
+      </a>
+    </div>
+
+  </body>
+</html>
